@@ -5,15 +5,15 @@ Esse script todo feito em **Python**, mostra a quantidade de anos, meses, semana
 ## screenshots
 
 _Recebendo os dados do usuário._
-![Recebendo_dados](Screenshots/Recebendo_dados.jpg)
+![Recebendo_dados](screenshots/Recebendo_dados.jpg)
 
 _Mostrando os dados._
-![Print_dados](Screenshots/Print_dados.jpg)
+![Print_dados](screenshots/Print_dados.jpg)
 
 _Tratamento de erros._
-![Erros](Screenshots/Erros.jpg)
+![Erros](screenshots/Erros.jpg)
 
 
 ## Licença
 
-MIT © [Paulo Daniel](https://github.com/TrexPD)s
+MIT © [Paulo Daniel](https://github.com/TrexPD)
