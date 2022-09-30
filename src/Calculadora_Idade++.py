@@ -51,35 +51,43 @@ def caixa_dialogo(dialogo):
 def data_correta() -> list():
     # Procura um dia válido!
     while True:
-        dia: int = leia_int('Em que DIA você nasceu? ')
-        if dia > 31 or dia < 1:
-            print(
-                f"\033[1;31mDia '{dia}' inexistente, por favor digite um dia válido!\033[m"
-            )
-        else:
-            break
+        try:
+            while True:
+                dia: int = leia_int('Em que DIA você nasceu? ')
+                if dia > 31 or dia < 1:
+                    print(
+                        f"\033[1;31mDia '{dia}' inexistente, por favor digite um dia válido!\033[m"
+                    )
+                else:
+                    break
 
-    # Procura um mês válido!
-    while True:
-        mes: int = leia_int('Em que MÊS você nasceu? ')
-        if mes > 12 or mes < 1:
-            print(
-                f"\033[1;31mMês '{mes}' inexistente, por favor digite um mês válido!\033[m"
-            )
-        else:
-            break
+            # Procura um mês válido!
+            while True:
+                mes: int = leia_int('Em que MÊS você nasceu? ')
+                if mes > 12 or mes < 1:
+                    print(
+                        f"\033[1;31mMês '{mes}' inexistente, por favor digite um mês válido!\033[m"
+                    )
+                else:
+                    break
 
-    # Procura um ano válido!
-    while True:
-        ano_atual: str = int(date.today().strftime('%Y'))
-        ano: int = leia_int('Agora digite o ANO em que você nasceu? ')
-        if len(str(ano)) == 4 and ano <= ano_atual:
-            break
+            # Procura um ano válido!
+            while True:
+                ano_atual: str = int(date.today().strftime('%Y'))
+                ano: int = leia_int('Agora... digite o ANO em que você nasceu? ')
+                if len(str(ano)) == 4 and ano <= ano_atual:
+                    break
+                else:
+                    print(
+                        '\033[1;31mFormato inválido! O ano tem que ter 4 digitos e igual ou menor que o ano atual! [Ex: 1900]\033[m'
+                    )
+
+            # Verifica se a data existe!
+            datetime.strptime(f"{dia}/{mes}/{ano}", "%d/%m/%Y")
+        except ValueError: 
+            print("\033[1;31mEssa data não existe! Por favor digite uma data válida!\033[m")
         else:
-            print(
-                '\033[1;31mFormato inválido! O ano tem que ter 4 digitos e igual ou menor que o ano atual! [Ex: 1900]\033[m'
-            )
-    return [dia, mes, ano]
+            return [dia, mes, ano]
 
 
 # Data Nascimento
@@ -183,11 +191,11 @@ def aniverario():
 print('')
 caixa_dialogo(f'Alguns dados sobre a data {dia}/{mes}/{ano}!')
 print(
-    f'\nSua idade: {int(q_anos)} anos | {q_meses_restantes} meses | {q_dias_restantes} dias'
+    f'\nSua idade: {int(q_anos)} ano(s) | {q_meses_restantes} mese(s) | {q_dias_restantes} dia(s)'
 )
 print(aniverario())
 print(
-    f"""\nMAIS DETALHES:\n\nAnos: {int(q_anos)}\nMeses: {q_meses}
-Semanas: {q_semanas}\nDias: {q_dias}\nHoras: {q_horas}\nMinutos: {q_minutos}
-Segundos: {q_segundos} \nDia da semana: {dia_semana(dia, mes, ano)}"""
+    f"""\nMAIS DETALHES:\n\nAno(s): {int(q_anos)}\nMes(es): {q_meses}
+Semana(s): {q_semanas}\nDia(s): {q_dias}\nHora(s): {q_horas}\nMinuto(s): {q_minutos}
+Segundo(s): {q_segundos} \nDia da semana: {dia_semana(dia, mes, ano)}"""
 )
