@@ -3,7 +3,7 @@ from datetime import datetime
 from rich import print
 from rich.table import Table
 from rich import box
-from rich.text import Text
+
 
 
 # Mostra o dia da semana da data atual ou de uma data especifica! primeiro dia da semana é domingo!
@@ -88,9 +88,9 @@ def ano_bissexto(ano_user: int, ano_atual: int) -> list:
 # Mostra uma mensagem com a quantidade de dias que faltam para o 'niver' ou caso seja o aniversario!
 def aniversariante(dia_user: int, dia_atual: int, mes_user: int, meses_atual: int, proximo_niver: int) -> str:
     if dia_user == dia_atual and mes_user == meses_atual:
-        return '\n[green]Parabéns hoje é seu aniversário![/] \U0001f973'
+        return '[green]Parabéns hoje é seu aniversário![/] \U0001f973'
     else:
-        return f'\nFaltam [yellow]{proximo_niver} dia(s)[/] para o seu aniversário!'
+        return f'Faltam [yellow]{proximo_niver} dia(s)[/] para o seu aniversário!'
 
 
 def main():
@@ -133,7 +133,7 @@ def main():
         ano_anterior: int = (ano_atual - 1)
         proximo_niver: int = abs(niver_no_atual_ano - data_atual_string).days
         niver_anterior = datetime.strptime(f'{ano_anterior}-{mes_user}-{dia_user}', r'%Y-%m-%d')
-        df_niver_restantes: int = abs(data_atual_string - niver_anterior).days # Diferença de dias entre o ano passado e o data atual de niver!
+        # df_niver_restantes: int = abs(data_atual_string - niver_anterior).days # Diferença de dias entre o ano passado e o data atual de niver!
         while True:
             q_meses_restantes: int = monthrange(ano_anterior, contador_meses)[1]
             lista_de_meses.append(q_meses_restantes)
@@ -144,10 +144,10 @@ def main():
                 contador_meses = 1
                 ano_anterior += 1
 
-    # Verifica e calcula a quantidade de meses e dias entre duas datas!
+    # Verifica e calcula a quantidade de meses e dias entre duas datas, no mesmo mês!
     q_dias_restantes = q_meses_restantes = 0
     if len(lista_de_meses) > 1:
-        ultimo_mes = monthrange(ano_atual, meses_atual)[1]
+        ultimo_mes: int = monthrange(ano_atual, meses_atual)[1]
         lista_de_meses[0] = abs(lista_de_meses[0] - dia_user)
         lista_de_meses[-1] = abs((lista_de_meses[-1] - dia_atual) - lista_de_meses[-1])
         for iteravel_meses in lista_de_meses:
@@ -166,8 +166,8 @@ def main():
             q_dias_restantes = abs(dia_atual - dia_user)
             q_meses_restantes = 0
 
-
-    tabela = Table(f'Alguns dados sobre a data [red]{dia_user}/{mes_user}/{ano_user}![/]')
+    print()
+    tabela = Table(f'Alguns dados sobre a data [yellow]{dia_user}/{mes_user}/{ano_user}![/]', box=box.MARKDOWN, show_lines=True)
     tabela.add_row(f'Sua idade: [yellow]{int(q_anos)} ano(s)[/] | [yellow]{q_meses_restantes} mese(s)[/] | [yellow]{q_dias_restantes} dia(s)[/]')
     tabela.add_row(aniversariante(dia_user, dia_atual, mes_user, meses_atual, proximo_niver))
     tabela.add_row(f"""
@@ -183,3 +183,4 @@ Dia da semana:   [blue]{dia_semana(dia_user, mes_user, ano_user)}[/]""")
 
 
 main()
+
