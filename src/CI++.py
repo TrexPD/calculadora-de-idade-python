@@ -183,4 +183,3 @@ Dia da semana:   [blue]{dia_semana(dia_user, mes_user, ano_user)}[/]""")
 
 
 main()
-
