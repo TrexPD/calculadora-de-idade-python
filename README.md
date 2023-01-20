@@ -8,6 +8,7 @@ Esse script todo feito em **Python**, mostra a quantidade de anos, meses, semana
 ```calendar```
 ```rich```
 
+
 ### Uso na prática:
 
 ##### Chamando a função e entrando com os valores!
@@ -45,10 +46,9 @@ Agora... digite o ano em que você nasceu? 1992
     </strong>🌟
 </h2>
 
-
 <p align="center">
-    Criado com ❤️ e python por
+    Criado com ❤️ e <strong>Python</strong> por
         <a href="https://github.com/TrexPD">
-            Paulo Daniel (TrexPD)!
+            <strong>Paulo Daniel (TrexPD)!</strong>
         </a>
 </p> 
